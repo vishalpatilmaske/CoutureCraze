@@ -1,0 +1,11 @@
+.product-image {
+  height: 300px;
+}
+
+img {
+  transition: transform 0.4s ease;
+}
+
+img:hover {
+  transform: scale(1.05);
+}
