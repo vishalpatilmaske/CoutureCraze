@@ -1,28 +1,41 @@
-import image from "../../Images/Poster/poster1.jpg";
+import { useLocation } from "react-router-dom";
+// import image from "../../Images/Poster/poster1.jpg";
 import "./Dashboard.css";
 import React from "react";
-function Dashboard(props) {
-  console.log("hello", props.name);
+
+function Dashboard() {
+  const data = useLocation();
+  const {
+    product_src,
+    product_title,
+    product_description,
+    product_of,
+    product_price,
+  } = data.state.product || {};
+
+  console.log(product_description); // why it shown undefiend
+
   return (
     <>
       <section className="container box row mt-5  mx-auto">
         <div className="product-image col-sm-6 row ">
           <div className="main-image-box">
             <img
-              src={image}
+              src={product_src}
               alt="girl image"
-              className="img-fluid img-md-thumbnail product-main-image w-80"
+              className="img-fluid img-md-thumbnail product-main-image w-60"
             />
           </div>
         </div>
         <div className="product-imformation col-sm-6 text-start">
-          <p className="product-info-text">{props.name}</p>
+          <p className="product-info-text">{product_description}</p>
           <hr />
           <p className="product-price-info">
             <b className="pe-2">
-              <sup>₹</sup>799
+              <sup>₹</sup>
+              {product_price}
             </b>
-            M.R.P : <s>₹ 2599</s>
+            M.R.P : ₹<s> {product_of}</s>
           </p>
           <div className="d-flex">
             <span className="pe-4">

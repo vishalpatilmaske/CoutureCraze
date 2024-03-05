@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./Navbar.css";
 import { BsCart4 } from "react-icons/bs";
+import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function Navbar() {
@@ -9,9 +10,9 @@ export default function Navbar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-          <a className="navbar-brand " href="#">
+          <Link className="navbar-brand " to="/">
             CoutureCraze
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -42,8 +43,13 @@ export default function Navbar() {
                 Features
               </Link>
             </ul>
-            <div class="cart-container ">
-              <ul className="navbar-nav">
+            <div class="cart-container  ">
+              <ul className="navbar-nav  ">
+                <li className="nav-item ">
+                  <span className="likes">
+                    <FaHeart className="text-danger mt-3 me-3" size={25} />
+                  </span>
+                </li>
                 <li className="nav-item">
                   <Link to="/Signup" className="nav-link me-5">
                     Sign up

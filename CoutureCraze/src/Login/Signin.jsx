@@ -69,7 +69,7 @@ export default function Signin() {
               <a href="#">Forgot Password</a>
             </p>
           </div>
-          <div className="submit d-grid">
+          <div className="submit d-grid  col-12">
             <input type="submit" className="btn btn-warning" value="Login" />
           </div>
           <p className="pt-2">

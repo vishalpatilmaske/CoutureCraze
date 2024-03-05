@@ -109,18 +109,16 @@ export default function Signup() {
           </div>
           <p className="error-message confirm-password" />
           <div className="submit d-grid">
-            <div className="submit d-grid">
-              <div className="submit d-grid mt-3">
-                <input
-                  type="submit"
-                  className="btn btn-warning"
-                  defaultValue="Sign up"
-                  onClick={(e) => {
-                    validation();
-                    e.preventDefault();
-                  }}
-                />
-              </div>
+            <div className="submit d-grid mt-3">
+              <input
+                type="submit"
+                className="btn btn-warning"
+                defaultValue="Sign up"
+                onClick={(e) => {
+                  validation();
+                  e.preventDefault();
+                }}
+              />
             </div>
           </div>
           <p className="pt-2">

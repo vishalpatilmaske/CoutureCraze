@@ -8,7 +8,7 @@ import Signup from "./Login/Signup";
 import Signin from "./Login/Signin";
 import Girls from "./Component/Products/Girls/Girls";
 import Cart from "./Component/Cart/Cart";
-import Dashboard from "./Component/Products/Dashboard/Dashboard";
+import Dashboard from "./Component/Products/Girls/Dashboard";
 
 function App() {
   return (
