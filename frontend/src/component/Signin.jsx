@@ -6,26 +6,37 @@ export default function Signin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Form submited Successfully");
+    try {
+      const response = await fetch("http://localhost:3000/api/users/signin", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      // handle api response
+      const responseData = await response.json();
+      if (response.ok) {
+        alert(responseData.message);
+        console.log(responseData.message);
+      } else {
+        alert(responseData.error);
+      }
+    } catch (error) {
+      console.log("Error:", error.message);
+      alert("Signup Error : Network Error");
+    }
   };
 
   return (
     <div className="login">
       <form
-        action="action.php"
         id="show-login"
         name="login_form"
-        method="post"
+        method="POST"
         onSubmit={handleSubmit}
       >
         <div className="login-form col-sm-12">
@@ -48,7 +59,9 @@ export default function Signin() {
               className="form-control"
               name="email"
               value={email}
-              onChange={handleEmailChange}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
             />
           </div>
           <div className="pass text-start">
@@ -61,7 +74,9 @@ export default function Signin() {
               className="form-control "
               name="password"
               value={password}
-              onChange={handlePasswordChange}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
             />
           </div>
           <div className="mt-2 mb-5">

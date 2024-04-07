@@ -9,7 +9,8 @@ import Girls from "../src/component/Girls.jsx";
 import Boys from "../src/component/Boys.jsx";
 import Kids from "../src/component/Kids.jsx";
 import Cart from "../src/pages/Cart.jsx";
-import Dashboard from "../src/component/Signin.jsx";
+import Profile from "../src/pages/Profile.jsx";
+import Dashboard from "../src/component/Dashboard.jsx";
 import "../src/styles/App.css";
 import Footer from "./component/Footer.jsx";
 
@@ -28,6 +29,7 @@ function App() {
           <Route path="/Boys" element={<Boys />} />
           <Route path="/Kids" element={<Kids />} />
           <Route path="/Cart" element={<Cart />} />
+          <Route path="/Profile" element={<Profile />} />
           <Route path="/Dashboard" element={<Dashboard />} />
         </Routes>
         <Footer />

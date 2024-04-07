@@ -1,20 +1,40 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 .navbar-brand {
   font-family: "Dancing Script";
   font-size: 2vw;
   margin-left: 20px;
+  color: #ffffff;
 }
 
 .nav-link {
   font-family: "Roboto";
   font-size: 1.5vw;
-  color: black;
+  color: #ffffff;
+}
+.backgound-color {
+  /* background-color: #c9c9c9; */
+  background-color: #131a22;
+}
+span {
+  color: #ffffff;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+.profile {
+  cursor: pointer;
+  color: rgb(243, 179, 5);
+}
+.categories-menu {
+  margin-top: 4rem;
+  padding: 10px;
+  background-color: #667586;
 }
 
-@media screen and(min-width:768px) and (max-width: 1024px) {
+.categories li a {
+  color: #131a22;
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
   .navbar-brand {
     font-size: 3vw;
   }

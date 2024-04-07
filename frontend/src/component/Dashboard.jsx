@@ -1,141 +1,59 @@
-import { useLocation } from "react-router-dom";
-// import image from "../../Images/Poster/poster1.jpg";
-import "./Dashboard.css";
 import React from "react";
-
+import { useLocation } from "react-router-dom";
+import "../styles/Dashboard.css";
 function Dashboard() {
-  const data = useLocation();
-  const {
-    product_src,
-    product_title,
-    product_description,
-    product_of,
-    product_price,
-  } = data.state.product || {};
+  const location = useLocation();
+  const productDetails = location.state.productDetails;
+  const images = productDetails.image_style;
 
-  console.log(product_description); // why it shown undefiend
-
+  const offPersentage = Math.floor(Math.random() * (80 - 10 + 1)) + 10;
+  const offPrice = Math.floor(Math.random() * (2001 - 400)) + 400;
   return (
-    <>
-      <section className="container box row mt-5  mx-auto">
-        <div className="product-image col-sm-6 row ">
-          <div className="main-image-box">
-            <img
-              src={product_src}
-              alt="girl image"
-              className="img-fluid img-md-thumbnail product-main-image w-60"
-            />
+    <div className="dashboard-container">
+      <div className="dashboard row container mt-3 ">
+        <div className="col-sm-6 row">
+          <div className="col-sm-2 product-images">
+            <ul>
+              {images.map((product) => (
+                <li>
+                  <img src={product} alt="" />
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="col-sm-9  main-image">
+            <img src={productDetails.image} alt="" />
           </div>
         </div>
-        <div className="product-imformation col-sm-6 text-start">
-          <p className="product-info-text">{product_description}</p>
+        <div className="col-sm-6  p-5">
+          <h3>{productDetails.description}</h3>
           <hr />
-          <p className="product-price-info">
-            <b className="pe-2">
+          <div className="price-container">
+            <p className="off ">-{offPersentage}%</p>
+            <p className="price">
               <sup>₹</sup>
-              {product_price}
-            </b>
-            M.R.P : ₹<s> {product_of}</s>
+              {productDetails.price}
+            </p>
+          </div>
+          <p className="price-off">
+            M.R.P.:
+            <s> ₹{offPrice}</s>
           </p>
-          <div className="d-flex">
-            <span className="pe-4">
-              <strong>Size : </strong>
-            </span>
-
-            <select
-              className="form-select form-select-sm"
-              aria-label="Small select example"
-            >
-              <option value="S" selected>
-                S
-              </option>
-              <option value="M">M</option>
-              <option value="L">L</option>
-              <option value="Xl">Xl</option>
+          <hr />
+          <div className="select-container">
+            <label htmlFor="size">Size : </label>
+            <select name="size" id="size">
+              <option value="L">L </option>
+              <option value="S">S </option>
+              <option value="M">M </option>
+              <option value="XL">XL </option>
+              <option value="XXL">XXL </option>
             </select>
           </div>
           <hr />
-          <div className="product-detials text-start">
-            <table>
-              <thead>
-                <tr>
-                  <th>
-                    <strong className="product-info-detials-heading">
-                      Product details
-                    </strong>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th>Material type</th>
-                  <td>Polyester</td>
-                </tr>
-                <tr>
-                  <th>Length</th>
-                  <td>Midi</td>
-                </tr>
-                <tr>
-                  <th>Occasion type</th>
-                  <td>Evening</td>
-                </tr>
-                <tr>
-                  <th>Sleeve type</th>
-                  <td>3/4 Sleeve</td>
-                </tr>
-                <tr>
-                  <th>Pattern</th>
-                  <td>Solid</td>
-                </tr>
-                <tr>
-                  <th>Style</th>
-                  <td>A-Line</td>
-                </tr>
-                <tr>
-                  <th>Country of Origin</th>
-                  <td>India</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <hr />
-          <div className="buy-item-container">
-            <div className="d-flex">
-              <span className="pe-4">
-                <strong>Quantity :</strong>
-              </span>
-              <select
-                className="form-select form-select-sm"
-                aria-label="Small select example"
-              >
-                <option value={1} defaultValue={1}>
-                  1
-                </option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-                <option value={6}>6</option>
-                <option value={7}>7</option>
-                <option value={8}>8</option>
-                <option value={9}>9</option>
-                <option value={10}>10</option>
-                <option value={11}>11</option>
-                <option value={12}>12</option>
-              </select>
-            </div>
-            <br />
-            <div className="buy-product-container d-flex flex-row gap-3">
-              <button className="rounded-pill add-item w-50">
-                Add to Cart
-              </button>
-              <br />
-              <button className="rounded-pill buy-item w-50">Buy Now</button>
-            </div>
-          </div>
         </div>
-      </section>
-    </>
+      </div>
+    </div>
   );
 }
 

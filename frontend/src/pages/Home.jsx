@@ -3,13 +3,13 @@ import image2 from "../assets/images/carousel/home2.webp";
 import image3 from "../assets/images/carousel/home3.webp";
 import poster1 from "../assets/images/poster/poster1.jpg";
 import poster2 from "../assets/images/poster/poster2.webp";
-import product1 from "../assets/images/products/product1.jpg";
-import product2 from "../assets/images/products/product2.jpg";
-import product3 from "../assets/images/products/product3.jpg";
-import product4 from "../assets/images/products/product4.jpg";
+// import product1 from "../assets/images/products/product1.jpg";
+// import product2 from "../assets/images/products/product2.jpg";
+// import product3 from "../assets/images/products/product3.jpg";
+// import product4 from "../assets/images/products/product4.jpg";
 import "../styles/Home.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 export default function Home() {
   return (
@@ -78,7 +78,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container-fluid  row mt-5">
+      {/* <section className="container-fluid  row mt-5">
         <div className="product-container col-3">
           <img src={product1} alt="product image" />
         </div>
@@ -91,7 +91,7 @@ export default function Home() {
         <div className="product-container col-3">
           <img src={product4} alt="product image" />
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }

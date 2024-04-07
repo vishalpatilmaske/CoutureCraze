@@ -1,10 +1,15 @@
 .footer {
-  margin-top: 3rem;
+  margin: 0;
+  padding: 0;
   text-align: left;
   padding: 20px 130px;
-  color: black;
+  color: #999999;
   cursor: pointer;
-  background-color: rgb(187, 255, 187);
+  background-color: #131a22;
+  margin-top: 1rem;
+}
+h5 {
+  color: #ffffff;
 }
 
 @media screen and (max-width: 767px) {

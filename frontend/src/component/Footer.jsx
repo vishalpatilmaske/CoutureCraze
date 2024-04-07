@@ -3,7 +3,7 @@ import "../styles/Footer.css";
 
 function Footer() {
   return (
-    <div className="footer row container-fluid">
+    <div className="footer row">
       <div className="col-4  col-md-3">
         <h5>My Account</h5>
         <p>

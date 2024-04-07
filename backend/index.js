@@ -7,7 +7,7 @@ dotenv.config({
 });
 const PORT = process.env.PORT || 4000;
 
-// chek the connection
+// check database connection
 connection.connect((err) => {
   if (err) {
     console.log("Error connecting to MySQL database:", err.message);

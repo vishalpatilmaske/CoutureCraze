@@ -7,59 +7,79 @@ export default function Signup() {
   const [password, setPassword] = useState("");
   const [conPassword, setConPassword] = useState("");
 
-  function validation() {
-    if (email.length === 0) {
+  // forntend validation
+  const validation = () => {
+    if (email.trim() === "") {
       alert("Email can't be empty");
-      return;
+      return false;
     }
-    if (password.length === 0) {
+    if (password.trim() === "") {
       alert("Password can't be empty");
-      return;
+      return false;
     }
-    if (confirmPassword.length === 0) {
+    if (conPassword.trim() === "") {
       alert("Confirm Password can't be empty");
-      return;
+      return false;
     }
     if (password !== conPassword) {
       alert("Passwords do not match");
-      return;
+      return false;
     }
     const specialCharacters = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
-    const containsSpecialCharacter = specialCharacters.test(password);
-    if (!containsSpecialCharacter) {
+    if (!specialCharacters.test(password)) {
       alert("Password must contain at least one special character");
-      return;
+      return false;
     }
-
-    const containsNumber = /\d/.test(password);
-    if (!containsNumber) {
+    if (!/\d/.test(password)) {
       alert("Password must contain at least one number");
-      return;
+      return false;
     }
-
-    const containsUppercase = /[A-Z]/.test(password);
-    if (!containsUppercase) {
+    if (!/[A-Z]/.test(password)) {
       alert("Password must contain at least one uppercase letter");
-      return;
+      return false;
     }
-
-    const containsLowercase = /[a-z]/.test(password);
-    if (!containsLowercase) {
+    if (!/[a-z]/.test(password)) {
       alert("Password must contain at least one lowercase letter");
+      return false;
+    }
+    return true;
+  };
+
+  const submitData = async (event) => {
+    console.log(email, password);
+    event.preventDefault();
+    if (!validation()) {
       return;
     }
+    try {
+      const response = await fetch("http://localhost:3000/api/users/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
 
-    alert("Validation successful. Form can be submitted.");
-  }
+      // handle backend response
+      const responseData = await response.json();
+
+      if (response.ok) {
+        alert(responseData.message);
+      } else {
+        console.error("Error:", response.statusText);
+        alert(responseData.error);
+      }
+    } catch (error) {
+      console.error("Error:", error.message);
+    }
+  };
 
   return (
     <div className="singup">
-      <form
-        action=""
-        name="login_form"
-        onsubmit="return form_validation()"
-        method="post"
-      >
+      <form name="login_form" onSubmit={submitData} method="post">
         <div className="singup-form" col-sm-12>
           <span className="cross-icon">
             <i className="fa-solid fa-xmark" />
@@ -106,15 +126,7 @@ export default function Signup() {
           <p className="error-message confirm-password" />
           <div className="submit d-grid">
             <div className="submit d-grid mt-3">
-              <input
-                type="submit"
-                className="btn btn-warning"
-                defaultValue="Sign up"
-                onClick={(e) => {
-                  validation();
-                  e.preventDefault();
-                }}
-              />
+              <input type="submit" className="btn btn-warning" />
             </div>
           </div>
           <p className="pt-2">
